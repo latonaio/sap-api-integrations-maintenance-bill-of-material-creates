@@ -1,11 +1,11 @@
-# sap-api-integrations-maintenance-bill-of-material  
+# sap-api-integrations-maintenance-bill-of-material-creates  
 sap-api-integrations-maintenance-bill-of-material-creates は、外部システム(特にエッジコンピューティング環境)をSAPと統合することを目的に、保全部品表（BOM）データを取得するマイクロサービスです。  
 sap-api-integrations-maintenance-bill-of-material-creates には、サンプルのAPI Json フォーマットが含まれています。  
 sap-api-integrations-maintenance-bill-of-material-creates は、オンプレミス版である（＝クラウド版ではない）SAPS4HANA API の利用を前提としています。クラウド版APIを利用する場合は、ご注意ください。  
 https://api.sap.com/api/OP_API_MAINTENANCE_BOM_0001/overview  
 
 ## 動作環境  
-sap-api-integrations-maintenance-bill-of-material  は、主にエッジコンピューティング環境における動作にフォーカスしています。  
+sap-api-integrations-maintenance-bill-of-material-creates  は、主にエッジコンピューティング環境における動作にフォーカスしています。  
 使用する際は、事前に下記の通り エッジコンピューティングの動作環境（推奨/必須）を用意してください。  
 ・ エッジ Kubernetes （推奨）   
 ・ AION のリソース （推奨)   
@@ -13,17 +13,17 @@ sap-api-integrations-maintenance-bill-of-material  は、主にエッジコン�
 ・ CPU: ARM/AMD/Intel（いずれか必須）  
 
 ## クラウド環境での利用
-sap-api-integrations-maintenance-bill-of-material  は、外部システムがクラウド環境である場合にSAPと統合するときにおいても、利用可能なように設計されています。
+sap-api-integrations-maintenance-bill-of-material-creates  は、外部システムがクラウド環境である場合にSAPと統合するときにおいても、利用可能なように設計されています。
 
 
 ## 本レポジトリ が 対応する API サービス
-sap-api-integrations-maintenance-bill-of-material  が対応する APIサービス は、次のものです。
+sap-api-integrations-maintenance-bill-of-material-creates  が対応する APIサービス は、次のものです。
 
 * APIサービス概要説明 URL: https://api.sap.com/api/OP_API_MAINTENANCE_BOM_0001/overview  
 * APIサービス名(=baseURL): API_MAINTENANCEBOM
 
 ## 本レポジトリ に 含まれる API名
-sap-api-integrations-maintenance-bill-of-material  には、次の API をコールするためのリソースが含まれています。  
+sap-api-integrations-maintenance-bill-of-material-creates  には、次の API をコールするためのリソースが含まれています。  
 
 * BOMHeader（保全部品表 - ヘッダ）
 * BOMItem（保全部品表 - 明細）
@@ -96,8 +96,8 @@ func (c *SAPAPICaller) AsyncPostMaintenanceBillOfMaterial(
 以下の項目のうち、"BillOfMaterial" ～ "to_MaintBillOfMaterialItem" は、/SAP_API_Output_Formatter/type.go 内 の Type Header {} による出力結果です。"cursor" ～ "time"は、golang-logging-library-for-sap による 定型フォーマットの出力結果です。
 ```
 {
-    "cursor": "/Users/latona2/bitbucket/sap-api-integrations-maintenance-bill-of-material-reads/SAP_API_Caller/caller.go#L73",
-    "function": "sap-api-integrations-maintenance-bill-of-material-reads/SAP_API_Caller.(*SAPAPICaller).Header",
+    "cursor": "/Users/latona2/bitbucket/sap-api-integrations-maintenance-bill-of-material-creates-reads/SAP_API_Caller/caller.go#L73",
+    "function": "sap-api-integrations-maintenance-bill-of-material-creates-reads/SAP_API_Caller.(*SAPAPICaller).Header",
     "level": "INFO",
     "message": [
         {
