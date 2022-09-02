@@ -1,5 +1,5 @@
 # sap-api-integrations-maintenance-bill-of-material-creates  
-sap-api-integrations-maintenance-bill-of-material-creates は、外部システム(特にエッジコンピューティング環境)をSAPと統合することを目的に、保全部品表（BOM）データを取得するマイクロサービスです。  
+sap-api-integrations-maintenance-bill-of-material-creates は、外部システム(特にエッジコンピューティング環境)をSAPと統合することを目的に、保全部品表（BOM）データを登録するマイクロサービスです。  
 sap-api-integrations-maintenance-bill-of-material-creates には、サンプルのAPI Json フォーマットが含まれています。  
 sap-api-integrations-maintenance-bill-of-material-creates は、オンプレミス版である（＝クラウド版ではない）SAPS4HANA API の利用を前提としています。クラウド版APIを利用する場合は、ご注意ください。  
 https://api.sap.com/api/OP_API_MAINTENANCE_BOM_0001/overview  
@@ -39,7 +39,7 @@ accepter において 下記の例のように、データの種別（＝APIの�
 ここでは、"Header" が指定されています。    
   
 ```
-"api_schema": "sap.s4.beh.maintenancebillofmaterial.v1.MaintenanceBillOfMaterial.Created.v1",
+"api_schema": "SAPMaintenanceBillOfMaterialCreates",
 "accepter": ["Header"],
 "technical_object": "210100091",
 "plant": "DE10",
@@ -51,7 +51,7 @@ accepter において 下記の例のように、データの種別（＝APIの�
 全データを取得する場合、sample.json は以下のように記載します。  
 
 ```
-"api_schema": "sap.s4.beh.maintenancebillofmaterial.v1.MaintenanceBillOfMaterial.Created.v1",
+"api_schema": "SAPMaintenanceBillOfMaterialCreates",
 "accepter": ["All"],
 "technical_object": "210100091",
 "plant": "DE10",
@@ -68,7 +68,7 @@ func (c *SAPAPICaller) AsyncPostMaintenanceBillOfMaterial(
 	item              *requests.Item,
 	accepter []string) {
 	wg := &sync.WaitGroup{}
-	wg.Add(1)
+    wg.Add(len(accepter))
 	for _, fn := range accepter {
 		switch fn {
 		case "Header":
@@ -92,7 +92,7 @@ func (c *SAPAPICaller) AsyncPostMaintenanceBillOfMaterial(
 
 ## Output  
 本マイクロサービスでは、golang-logging-library-for-sap により、以下のようなデータがJSON形式で出力されます。
-以下の sample.json の例は、SAP 保全部品表 の ヘッダ が取得された結果の JSON の例です。
+以下の sample.json の例は、SAP 保全部品表 の ヘッダ が登録された結果の JSON の例です。
 以下の項目のうち、"BillOfMaterial" ～ "to_MaintBillOfMaterialItem" は、/SAP_API_Output_Formatter/type.go 内 の Type Header {} による出力結果です。"cursor" ～ "time"は、golang-logging-library-for-sap による 定型フォーマットの出力結果です。
 ```
 {
